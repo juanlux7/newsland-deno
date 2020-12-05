@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link rel="icon" href="/favicon.ico"/>
+  <title>The NewsLand - <%= title %></title>
+</head>
+
+<body>
+
+  <!-- main navbar -->
+  <%- await include('views/partials/navbar.ejs', { user: user } ) %>
+
+  <div class="limiter">
+    <div class="container-login">
+      <div class="wrap-login">
+
+        <!-- including ejs partials to avoid repeating some code -->
+      
+        <%- await include('views/partials/loginPartial.ejs', { error: error } ) %>
+        
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+<script defer>
+  document.querySelector('.menu-btn').addEventListener('click', () => {
+        document.querySelector('.main-menu').classList.toggle('show');
+        document.querySelector('#menu-icon').classList.toggle('fa-bars');
+        document.querySelector('#menu-icon').classList.toggle('fa-times');
+    });
+</script>
+
+</html>

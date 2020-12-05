@@ -1,0 +1,26 @@
+
+<div class="latest-posts-wrapper">
+    <div class="img-latest-article">
+        <img src="/post-images/<%= post.img_url %>" alt="<%= post.title %>-img" />
+    </div>
+
+    <span class="category-tag">
+
+        <a href="/articles/<%= post.category %>"><%= post.category %></a>
+
+        <% if(post.premium_access) { %>
+            <span class="premium-resource"><i class="fas fa-star"></i> Premium Content</span>
+        <% } %> 
+
+    </span>
+
+
+    <div class="inner-text">
+        <a href="/article/<%= post._id['$oid'] %>">
+            <h3 class="post-title"><%= post.title %></h3>
+        </a>
+
+        <p class="author">BY <%= post.author || "Staff" %></p>
+    </div>
+
+</div>

@@ -1,0 +1,50 @@
+<div class="mobile-menu">
+    <div class="menu-btn"><i id="menu-icon" class="fa fa-bars fa-2x"></i></div>
+    <a href="/"><span class="menu-logo">The NewsLand</span></a>
+</div>
+
+<nav class="main-menu">
+
+    <div class="main-menu-inner">
+        <div class="logo">
+            <h2><a href="/">The NewsLand</a></h2>
+            <small class="free-premium-content">Free premium content for limited time</small>
+        </div>
+
+        <ul class="right-links">
+
+            <li class="nav-item">
+                <a href="/#latestPosts">Latest Articles</a>
+            </li>
+            <li class="nav-item">
+                <a href="/#topPosts">Top Articles</a>
+            </li>
+            <li class="nav-item">
+                <a href="/contact">Contact</a>
+            </li>
+
+            <% if(user) { %>
+
+                <li class="nav-item">
+                     <a href="#"><i class="fas fa-user"></i> <%= user.username %></a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+               </li>
+
+            <% } else { %>
+
+            <li class="nav-item">
+                <a href="/login"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/register"><i class="fas fa-user-plus"></i> Register</a>
+            </li>
+
+            <% } %>
+
+        </ul>
+    </div>
+</nav>

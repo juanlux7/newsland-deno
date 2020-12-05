@@ -1,0 +1,19 @@
+<div class="top-post">
+
+    <div class="post-wrapper">
+
+        <img src="/post-images/<%= post.img_url %>" alt="<%= post.title %>-img" />
+
+        <div class="inner-text">
+            <% if(post.premium_access) { %>
+                <span class="premium-resource"><i class="fas fa-star"></i> Premium Content</span>
+            <% } %>
+            <h2><a href="/article/<%= post._id['$oid'] %>"><%= post.title %></a></h2>
+            <p><%- post.content.substring(0,100) %>... <a class="continue-reading"
+                    href="/article/<%= post._id['$oid'] %>">continue reading</a></p>
+            <p class="author">BY <%= post.author %></p>
+        </div>
+
+    </div>
+
+</div>

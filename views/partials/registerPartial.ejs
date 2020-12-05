@@ -1,0 +1,46 @@
+<form action="/register" method="POST" class="login-form">
+  <span class="login100-form-logo">
+    <i class="zmdi zmdi-landscape"></i>
+  </span>
+
+  <span class="login-form-title p-b-34 p-t-27">
+    Create a new account
+  </span>
+
+  <% if(error) { %>
+
+    <div class="errorbox">
+      <%= error %>
+    </div>
+
+    <% } %>
+
+  <div class="wrap-input">
+    <label>Full Name</label>
+    <input type="text" name="name" placeholder="write your full name" maxlength="30" class="input" required>
+    <span class="focus-input" data-placeholder="&#xf207;"></span>
+  </div>
+  <div class="wrap-input">
+    <label>Email</label>
+    <input type="text" name="email" placeholder="write a valid email" maxlength="30" class="input" required>
+  </div>
+  <div class="wrap-input">
+    <label>Username</label>
+    <input type="text" maxlength="20" name="username" placeholder="username must contain only letters and numbers" pattern="^[a-zA-Z0-9]*$" title="a valid username must contain only alphanumeric values" class="input" required>
+  </div>
+  <div class="wrap-input">
+    <label>Password</label>
+    <input type="password" maxlength="30" minlength="8" title="8 or more characters" placeholder="password must be longer than 8 characters" name="password" class="input" required>
+  </div>
+  <div class="wrap-input">
+    <label>Confirm Password</label>
+    <input type="password" maxlength="30" minlength="8" title="8 or more characters" placeholder="confirm the password" name="password-confirm" class="input" required>
+  </div>
+  <div class="form-buttons">
+    <button type="submit" class="login-form-btn">Create Account</button>
+    <div>
+      <a href="/login">login</a>
+    </div>
+  </div>
+
+</form>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="icon" href="/favicon.ico"/>
+    <title>The NewsLand</title>
+</head>
+
+<body>
+
+    <!-- main navbar fragment -->
+    <%- await include('views/partials/navbar.ejs', { user: user } ) %>
+
+    <main class="main-section">
+
+        <div class="container">
+
+            <div class="inner-content">
+            
+                <h2 class="errorMsg"><i class="fas fa-times-circle fa-x3"> </i> <%= error %> :(</i></h2>
+
+            </div>
+        </div>
+
+    </main>
+     <!-- footer fragment -->
+
+     <%- await include('views/partials/footer.ejs', {} ) %>
+
+    </body>
+    <script defer>
+        document.querySelector('.menu-btn').addEventListener('click', () => {
+            document.querySelector('.main-menu').classList.toggle('show');
+            // first remove fa-bars class from the classList
+            document.querySelector('#menu-icon').classList.toggle('fa-bars');
+            // then add fa-times on the classlist
+            document.querySelector('#menu-icon').classList.toggle('fa-times');
+        });
+    
+    </script>
+    
+</html>

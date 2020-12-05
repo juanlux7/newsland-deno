@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="content of the article: <%= post.title %>">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="icon" href="/favicon.ico"/>
+    <title><%= title %></title>
+</head>
+<body>
+
+    <!-- main navbar -->
+    <%- await include('views/partials/navbar.ejs', { user: user } ) %>
+
+        <article class="single-article">
+            
+            <div class="top-inner-text">
+
+                <h2 class="article-title"><%= post.title %></h2>
+
+                <% if(post.premium_access) { %>
+                    <span class="premium-resource"><i class="fas fa-star"></i> Premium Content</span>
+                <% } %>
+
+                <span class="article-author">Article by <%= post.author %></span>
+            </div>
+
+
+            <div class="post-image">
+                <img src="/post-images/<%= post.img_url %>" alt="<%= post.title %>-img" />
+                <p><%= post.img_source %></p>
+            </div>
+
+            <div class="post-content">
+                <div class="post-content-wrapper">
+                    <%- post.content %>
+                </div>
+            </div>
+
+        </article>
+
+        <!-- latest post recommendation -->
+
+        <div class="latest-posts">
+
+        </div>
+
+            <!-- footer fragment -->
+
+            <%- await include('views/partials/footer.ejs', {} ) %>
+
+</body>
+
+<!-- javascript for handling the mobile menu -->
+<script defer>
+    document.querySelector('.menu-btn').addEventListener('click', () => {
+        document.querySelector('.main-menu').classList.toggle('show');
+        document.querySelector('#menu-icon').classList.toggle('fa-bars');
+        document.querySelector('#menu-icon').classList.toggle('fa-times');
+    });
+
+</script>
+</html>

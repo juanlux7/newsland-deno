@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="read the latest news around the world">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="icon" href="/favicon.ico"/>
+    <title>The NewsLand - <%= title %></title>
+</head>
+
+<body>
+
+    <!-- main navbar fragment -->
+    <%- await include('views/partials/navbar.ejs', { user: user } ) %>
+
+    <main class="main-section">
+
+        <% for(post of posts) {%>
+
+        <!-- if the result has a head post (top post), then show it first -->
+
+            <% if(post.head) { %>
+
+            <!-- include top post fragment here (there is always going to be 1 top post at a time, but only 1) -->
+
+            <%- await include('views/partials/posts/topPost.ejs', { post: post } ) %>
+
+                <div class="latest-posts" id="latestPosts">
+
+                    <h3>Latest Articles</h3>
+
+                    <div class="container">
+
+                    <% } else { %>
+
+                        <!-- latest posts fragment (grid of 3 items per row) -->
+
+                        <%- await include('views/partials/posts/latestPost.ejs', { post: post } ) %>
+
+                    <% } %>
+
+
+        <%  } %>
+
+                    </div>
+
+                    <div class="btn-inner-content">
+                        <a href="/register" class="btn-primary">Create an account for free</a>
+                    </div>
+
+                </div>
+
+
+                <section id="topPosts">
+                    <div class="container">
+                        <div class="separator"></div>
+                        <h3>Most read articles</h3>
+
+                        <div class="top-posts">
+
+                            <% for(topPost of topPosts) {%>
+
+                                <div class="top-posts-wrapper">
+                                    <div class="img-article">
+                                        <img src="/post-images/<%= topPost.img_url %>" />
+                                        <p class="category-tag"><a href="/articles/<%= topPost.category %>">
+                                            <%= topPost.category %>
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                    <div class="inner-text">
+                                        <a href="/article/<%= topPost._id['$oid'] %>">
+                                            <h3 class="post-title"><%= topPost.title %></h3>
+                                        </a>
+
+                                        <p class="author">BY <%= topPost.author || "Staff" %></p>
+                                    </div>
+
+                                </div>
+
+                            <% } %>
+                        </div>
+                    </div>
+                </section>
+    </main>
+
+    <!-- footer fragment -->
+
+    <%- await include('views/partials/footer.ejs', {} ) %>
+
+</body>
+
+<!-- javascript for handling the mobile menu -->
+<script defer>
+    document.querySelector('.menu-btn').addEventListener('click', () => {
+        document.querySelector('.main-menu').classList.toggle('show');
+        // first remove fa-bars class from the classList
+        document.querySelector('#menu-icon').classList.toggle('fa-bars');
+        // then add fa-times on the classlist
+        document.querySelector('#menu-icon').classList.toggle('fa-times');
+    });
+
+</script>
+
+</html>

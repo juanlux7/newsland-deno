@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="icon" href="/favicon.ico"/>
+    <title>The NewsLand - <%= title %></title>
+</head>
+<body>
+
+    <!-- main navbar -->
+    <%- await include('views/partials/navbar.ejs', { user: user } ) %>
+
+        <div class="categoryPosts">
+
+            <h2>Latest <%= categoryName %> articles </h2>
+        
+            <div class="categoryPostsInner">
+
+
+                <% for(post of posts) {%>
+
+                    <div class="latest-posts-wrapper">
+
+                        <div class="img-article">
+                            <img src="/post-images/<%= post.img_url %>" alt="<%= post.title %>-img" />
+                        </div>
+
+                        <% if(post.premium_access) { %>
+                            <span class="premium-resource"><i class="fas fa-star"></i> Premium Access</span>
+                        <% } %>
+
+                        <div class="inner-text">
+                            <a href="/article/<%= post._id['$oid'] %>"><h3 class="post-title"><%= post.title %></h3></a>
+                
+                            <p class="author">BY <%= post.author || "Staff" %></p>
+                        </div>
+
+                    </div>
+
+        
+                <% } %>
+
+            </div>
+
+        </div>
+            <!-- footer fragment -->
+
+        <%- await include('views/partials/footer.ejs', {} ) %>
+
+</body>
+<script defer>
+    document.querySelector('.menu-btn').addEventListener('click', () => {
+        document.querySelector('.main-menu').classList.toggle('show');
+        document.querySelector('#menu-icon').classList.toggle('fa-bars');
+        document.querySelector('#menu-icon').classList.toggle('fa-times');
+    });
+</script>
+</html>

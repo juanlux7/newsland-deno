@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NewsLand contact vias">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="icon" href="/favicon.ico"/>
+    <title>The NewsLand - <%= title %></title>
+</head>
+<body>
+
+    <!-- main navbar -->
+    <%- await include('views/partials/navbar.ejs', { user: user } ) %>
+
+    <section class="contact">
+        <div class="container">
+            <div class="contact-text">
+                <h3>Send a confidential News Info</h3>
+                <p>If you have a confidential news information,
+                you can reach us through tools that will help protect your anonymity</p>
+            
+            </div>
+
+            <div class="contact-text">
+                <h3>Report a correction</h3>
+                <p>To report errors regarding our coverage email us at info@newsland.com or leave a message at +34 (611-049-977). </p>
+            </div>
+
+            <div class="contact-text">
+                <h3>General Contact Channel</h3>
+                <p>
+                    Ask us a question via email: juanlux7@gmail.com
+                    
+                    If you are in the European Union, call us at +34 (611-049-977) Spain and ask for Juan Luna Lama.
+                    
+                    Our hours are 7 a.m. to 10 p.m. Monday - Friday, and 7 a.m. to 3 p.m. Saturday - Sunday.
+                    </p>
+            </div>
+
+        </div>
+    </section>
+           
+            <!-- footer fragment -->
+
+            <%- await include('views/partials/footer.ejs', {} ) %>
+
+</body>
+<script defer>
+    document.querySelector('.menu-btn').addEventListener('click', () => {
+        document.querySelector('.main-menu').classList.toggle('show');
+        document.querySelector('#menu-icon').classList.toggle('fa-bars');
+        document.querySelector('#menu-icon').classList.toggle('fa-times');
+    });
+</script>
+</html>

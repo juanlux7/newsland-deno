@@ -1,0 +1,34 @@
+<form action="/login" method="POST" class="login-form">
+    <span class="login100-form-logo">
+      <i class="zmdi zmdi-landscape"></i>
+    </span>
+
+    <span class="login-form-title p-b-34 p-t-27">
+      Log in
+    </span>
+
+    <% if(error) { %>
+
+      <div class="errorbox">
+        <%= error %>
+      </div>
+
+      <% } %>
+
+    <div class="wrap-input">
+      <label>Username</label>
+      <input type="text" name="username" class="input" required>
+      <span class="focus-input" data-placeholder="&#xf207;"></span>
+    </div>
+    <div class="wrap-input">
+      <label>Password</label>
+      <input type="password" name="password" class="input" required>
+    </div>
+    <div class="form-buttons">
+      <button type="submit" class="login-form-btn">Login</button>
+      <div>
+        <a href="/register">Register</a>
+      </div>
+    </div>
+
+  </form>
